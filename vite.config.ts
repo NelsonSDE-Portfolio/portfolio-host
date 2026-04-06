@@ -9,20 +9,20 @@ export default defineConfig({
     federation({
       name: 'portfolio-host',
       remotes: {
-        challengeTracker: 'http://localhost:5001/assets/remoteEntry.js',
+        challengeTracker: 'http://localhost:4001/assets/remoteEntry.js',
       },
       exposes: {
         './AuthContext': './src/contexts/AuthContext.tsx',
         './authStore': './src/stores/authStore.ts',
       },
-      shared: ['react', 'react-dom', 'react-router-dom', 'zustand'],
+      shared: ['react', 'react-dom', 'react-router-dom', 'zustand', '@clerk/clerk-react'],
     }),
   ],
   server: {
-    port: 5000,
+    port: 4000,
   },
   preview: {
-    port: 5000,
+    port: 4000,
   },
   build: {
     modulePreload: false,

@@ -1,17 +1,22 @@
-import { Navigate, useLocation } from 'react-router-dom';
-import { useAuthStore } from '../stores/authStore';
+import { useAuth, RedirectToSignIn } from '@clerk/clerk-react';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
 export function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const { isAuthenticated } = useAuthStore();
-  const location = useLocation();
+  const { isLoaded, isSignedIn } = useAuth();
 
-  if (!isAuthenticated) {
-    // Redirect to login, but save the attempted location
-    return <Navigate to="/login" state={{ from: location }} replace />;
+  if (!isLoaded) {
+    return (
+      <div className="flex justify-center py-8">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
+  if (!isSignedIn) {
+    return <RedirectToSignIn />;
   }
 
   return <>{children}</>;
