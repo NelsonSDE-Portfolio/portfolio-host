@@ -86,10 +86,7 @@ export function ArchitecturePage() {
     challengeTracker:
       'http://localhost:5001/assets/remoteEntry.js'
   },
-  exposes: {
-    './AuthContext': './src/contexts/AuthContext.tsx',
-  },
-  shared: ['react', 'react-dom', 'react-router-dom']
+  shared: ['react', 'react-dom', '@clerk/clerk-react']
 })`}
             </pre>
           </div>
@@ -228,17 +225,17 @@ export function ArchitecturePage() {
           Authentication Flow
         </h2>
         <p className="text-gray-600 mb-6">
-          Authentication state is managed by the host shell and shared with
-          remote applications via localStorage and Module Federation.
+          Authentication is handled by Clerk, providing secure session management
+          across both host and remote applications via shared React context.
         </p>
         <div className="bg-gray-50 rounded-lg p-6 font-mono text-sm">
           <pre className="text-gray-800">
-{`1. User logs in via host shell (/login)
-2. JWT token stored in localStorage
-3. Auth state managed by Zustand store
-4. Remote apps read auth from localStorage
-5. API requests include Bearer token via Axios interceptor
-6. 401 responses redirect to host login`}
+{`1. User signs in via Clerk (OAuth, email, etc.)
+2. Clerk manages session tokens automatically
+3. Auth state shared via ClerkProvider context
+4. Remote apps access auth via @clerk/clerk-react hooks
+5. API requests include Clerk JWT via getToken()
+6. Unauthenticated users redirected to Clerk sign-in`}
           </pre>
         </div>
       </section>

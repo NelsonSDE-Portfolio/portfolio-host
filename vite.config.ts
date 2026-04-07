@@ -15,10 +15,6 @@ export default defineConfig(({ mode }) => {
         remotes: {
           challengeTracker: `${challengeTrackerUrl}/assets/remoteEntry.js`,
         },
-        exposes: {
-          './AuthContext': './src/contexts/AuthContext.tsx',
-          './authStore': './src/stores/authStore.ts',
-        },
         shared: ['react', 'react-dom', 'react-router-dom', 'zustand', '@clerk/clerk-react'],
       }),
     ],
