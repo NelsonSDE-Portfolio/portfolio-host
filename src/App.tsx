@@ -1,15 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-  useUser,
-} from '@clerk/clerk-react';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { ProtectedRoute } from './components/ProtectedRoute';
 import { HomePage } from './pages/HomePage';
 import { ArchitecturePage } from './pages/ArchitecturePage';
 import './App.css';
@@ -29,7 +20,6 @@ function LoadingFallback() {
 }
 
 function Navigation() {
-  const { user } = useUser();
   const location = useLocation();
 
   const isActive = (path: string) => {
@@ -61,25 +51,6 @@ function Navigation() {
             <Link to="/architecture" className={linkClass('/architecture')}>
               Architecture
             </Link>
-            <div className="h-4 w-px bg-gray-300"></div>
-            <SignedIn>
-              <span className="text-gray-500 text-sm">
-                {user?.firstName || user?.emailAddresses[0]?.emailAddress}
-              </span>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
-            <SignedOut>
-              <SignInButton mode="modal">
-                <button className="text-gray-600 hover:text-gray-900 transition">
-                  Login
-                </button>
-              </SignInButton>
-              <SignUpButton mode="modal">
-                <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                  Sign Up
-                </button>
-              </SignUpButton>
-            </SignedOut>
           </div>
         </div>
       </div>
@@ -208,13 +179,11 @@ function App() {
         <Route
           path="/projects/challenge-tracker/*"
           element={
-            <ProtectedRoute>
-              <ErrorBoundary fallback={<RemoteErrorFallback />}>
-                <Suspense fallback={<LoadingFallback />}>
-                  <ChallengeTracker />
-                </Suspense>
-              </ErrorBoundary>
-            </ProtectedRoute>
+            <ErrorBoundary fallback={<RemoteErrorFallback />}>
+              <Suspense fallback={<LoadingFallback />}>
+                <ChallengeTracker />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
       </Routes>
