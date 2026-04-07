@@ -154,12 +154,12 @@ function Footer() {
             <h3 className="font-bold text-lg mb-4">Connect</h3>
             <ul className="space-y-2">
               <li>
-                <a href="https://github.com/nelsonriera" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
+                <a href="https://github.com/NelsonSDE" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
                   GitHub
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com/in/nelsonriera" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
+                <a href="https://www.linkedin.com/in/nelson-riera-76421879/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
                   LinkedIn
                 </a>
               </li>

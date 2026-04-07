@@ -112,7 +112,7 @@ export function HomePage() {
 
           <div className="flex justify-center gap-4 flex-wrap">
             <a
-              href="https://github.com/nelsonriera"
+              href="https://github.com/NelsonSDE"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-white text-gray-800 rounded-lg font-medium hover:bg-gray-100 transition shadow-lg flex items-center gap-2"
@@ -120,7 +120,7 @@ export function HomePage() {
               <span>GitHub</span>
             </a>
             <a
-              href="https://linkedin.com/in/nelsonriera"
+              href="https://www.linkedin.com/in/nelson-riera-76421879/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/30 transition flex items-center gap-2"
