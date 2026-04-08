@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
         remotes: {
           challengeTracker: `${challengeTrackerUrl}/assets/remoteEntry.js`,
         },
-        shared: ['react', 'react-dom', 'react-router-dom', 'zustand', '@clerk/clerk-react'],
+        shared: ['react', 'react-dom', 'react-router-dom', '@clerk/clerk-react'],
       }),
     ],
     server: {
@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
     build: {
       modulePreload: false,
       target: 'esnext',
-      minify: false,
+      minify: true,
       cssCodeSplit: false,
     },
   };

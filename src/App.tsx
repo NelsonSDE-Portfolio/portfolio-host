@@ -3,8 +3,6 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { HomePage } from './pages/HomePage';
 import { ArchitecturePage } from './pages/ArchitecturePage';
-import './App.css';
-
 // Lazy load the remote Challenge Tracker app
 const ChallengeTracker = lazy(() => import('challengeTracker/App'));
 
