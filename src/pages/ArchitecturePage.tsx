@@ -243,7 +243,7 @@ export function ArchitecturePage() {
       {/* CTA */}
       <section className="text-center">
         <Link
-          to="/challenges"
+          to="/projects/challenge-tracker"
           className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition shadow-lg"
         >
           Try the Challenge Tracker
