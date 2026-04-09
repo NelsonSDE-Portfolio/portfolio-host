@@ -2,20 +2,34 @@ import { Link } from 'react-router-dom';
 
 export function NotFoundPage() {
   return (
-    <div className="min-h-[60vh] flex items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4">
       <div className="text-center max-w-md">
-        <h1 className="text-6xl font-bold text-gray-300 mb-4">404</h1>
-        <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-          Page Not Found
-        </h2>
-        <p className="text-gray-600 mb-8">
-          The page you're looking for doesn't exist or has been moved.
+        <h1
+          className="font-mono font-bold tracking-tight mb-6"
+          style={{
+            fontSize: 'clamp(80px, 15vw, 160px)',
+            lineHeight: 1,
+            background: 'linear-gradient(to right, #60a5fa, #67e8f9)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
+          404
+        </h1>
+        <p className="text-lg mb-2" style={{ color: 'var(--text-primary)' }}>
+          Page not found in production.
+        </p>
+        <p className="text-base mb-10" style={{ color: 'var(--text-muted)' }}>
+          Works on my machine though.
         </p>
         <Link
           to="/"
-          className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold px-6 py-3 rounded-lg text-white transition-colors duration-200"
+          style={{ background: 'var(--accent)' }}
+          onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent-hover)'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'var(--accent)'; }}
         >
-          Back to Home
+          Take me home &rarr;
         </Link>
       </div>
     </div>
