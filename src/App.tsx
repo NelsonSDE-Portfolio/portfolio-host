@@ -137,18 +137,20 @@ function App() {
 
   if (isFullScreenRoute) {
     return (
-      <Routes>
-        <Route
-          path="/projects/challenge-tracker/*"
-          element={
-            <ErrorBoundary fallback={<RemoteErrorFallback />}>
-              <Suspense fallback={<LoadingFallback />}>
-                <ChallengeTracker />
-              </Suspense>
-            </ErrorBoundary>
-          }
-        />
-      </Routes>
+      <div style={{ height: '100%', overflowY: 'auto' }}>
+        <Routes>
+          <Route
+            path="/projects/challenge-tracker/*"
+            element={
+              <ErrorBoundary fallback={<RemoteErrorFallback />}>
+                <Suspense fallback={<LoadingFallback />}>
+                  <ChallengeTracker />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
+        </Routes>
+      </div>
     );
   }
 
