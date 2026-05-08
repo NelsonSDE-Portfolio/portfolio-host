@@ -11,6 +11,7 @@ import { ArchitecturePage } from './pages/ArchitecturePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 const ChallengeTracker = lazy(() => import('challengeTracker/App'));
+const Ledger = lazy(() => import('ledger/App'));
 
 function LoadingFallback() {
   return (
@@ -56,6 +57,39 @@ function RemoteErrorFallback() {
   );
 }
 
+function LedgerErrorFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-primary)' }}>
+      <div className="text-center max-w-md mx-auto p-8 rounded-card" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}>
+        <h2 className="text-xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+          Could not load Ledger
+        </h2>
+        <p className="text-sm mb-6" style={{ color: 'var(--text-secondary)' }}>
+          The application couldn't be loaded. The server might be sleeping or there's a network issue.
+        </p>
+        <div className="flex flex-col gap-3">
+          <button
+            onClick={() => window.location.reload()}
+            className="px-5 py-2.5 rounded-lg font-semibold text-sm text-white transition-colors duration-200 cursor-pointer"
+            style={{ background: 'var(--accent)' }}
+            onMouseEnter={e => (e.currentTarget.style.background = 'var(--accent-hover)')}
+            onMouseLeave={e => (e.currentTarget.style.background = 'var(--accent)')}
+          >
+            Retry
+          </button>
+          <Link
+            to="/"
+            className="px-5 py-2.5 rounded-lg text-sm text-center transition-colors duration-200"
+            style={{ color: 'var(--text-secondary)', border: '1px solid var(--border)' }}
+          >
+            Go back to portfolio
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
   if (el) {
@@ -72,7 +106,9 @@ function scrollToSection(id: string) {
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
-  const isFullScreenRoute = location.pathname.startsWith('/projects/challenge-tracker');
+  const isFullScreenRoute =
+    location.pathname.startsWith('/projects/challenge-tracker') ||
+    location.pathname.startsWith('/projects/ledger');
   const [paletteOpen, setPaletteOpen] = useState(false);
 
   const commandItems: CommandItem[] = [
@@ -145,6 +181,16 @@ function App() {
               <ErrorBoundary fallback={<RemoteErrorFallback />}>
                 <Suspense fallback={<LoadingFallback />}>
                   <ChallengeTracker />
+                </Suspense>
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="/projects/ledger/*"
+            element={
+              <ErrorBoundary fallback={<LedgerErrorFallback />}>
+                <Suspense fallback={<LoadingFallback />}>
+                  <Ledger />
                 </Suspense>
               </ErrorBoundary>
             }

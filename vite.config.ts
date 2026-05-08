@@ -6,6 +6,7 @@ import federation from '@originjs/vite-plugin-federation';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const challengeTrackerUrl = env.VITE_CHALLENGE_TRACKER_URL || 'http://localhost:4001';
+  const ledgerUrl = env.VITE_LEDGER_TRACKER_URL || 'http://localhost:4002';
 
   return {
     plugins: [
@@ -14,6 +15,7 @@ export default defineConfig(({ mode }) => {
         name: 'portfolio-host',
         remotes: {
           challengeTracker: `${challengeTrackerUrl}/assets/remoteEntry.js`,
+          ledger: `${ledgerUrl}/assets/remoteEntry.js`,
         },
         shared: ['react', 'react-dom', 'react-router-dom', '@clerk/clerk-react'],
       }),
