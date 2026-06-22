@@ -8,6 +8,8 @@ interface FeaturedProjectProps {
   architectureUrl: string;
   screenshotSrc?: string;
   isLive: boolean;
+  /** Domain shown in the browser-bar mockup. Defaults to the Challenge Tracker URL for backwards-compat. */
+  domain?: string;
 }
 
 export function FeaturedProject({
@@ -18,6 +20,7 @@ export function FeaturedProject({
   architectureUrl,
   screenshotSrc,
   isLive,
+  domain = 'challenge-tracker.nelsonriera.dev',
 }: FeaturedProjectProps) {
   return (
     <div
@@ -45,7 +48,7 @@ export function FeaturedProject({
             <span className="w-2 h-2 rounded-full" style={{ background: 'var(--text-muted)', opacity: 0.3 }} />
             <span className="w-2 h-2 rounded-full" style={{ background: 'var(--text-muted)', opacity: 0.3 }} />
             <span className="flex-1 text-center font-mono text-[11px]" style={{ color: 'var(--text-muted)' }}>
-              challenge-tracker.nelsonriera.dev
+              {domain}
             </span>
           </div>
           {/* Screenshot area */}
