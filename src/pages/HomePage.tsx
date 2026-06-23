@@ -8,6 +8,8 @@ import { FeaturedProject } from '../components/FeaturedProject';
 import { Timeline, TimelineItem } from '../components/Timeline';
 import { useSubtitleRotation } from '../hooks/useSubtitleRotation';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import challengeTrackerShot from '../assets/challenge-tracker-screenshot.png';
+import ledgerShot from '../assets/ledger-screenshot.png';
 
 const GITHUB_URL = 'https://github.com/NelsonSDE';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/nelson-riera-76421879/';
@@ -428,16 +430,31 @@ export function HomePage() {
               What I've built
             </h2>
           </ScrollReveal>
-          <ScrollReveal delay={100}>
-            <FeaturedProject
-              title="Challenge Tracker"
-              description="A multi-tenant SaaS accountability tool for group challenges. Real-time debt tracking, photo proof verification, and configurable rules — built on a micro-frontend architecture."
-              metrics={['Module Federation', 'Real-time Sync', 'Clerk Auth', 'S3 Uploads']}
-              liveUrl="/projects/challenge-tracker"
-              architectureUrl="/architecture"
-              isLive
-            />
-          </ScrollReveal>
+          <div className="flex flex-col gap-8 md:gap-12">
+            <ScrollReveal delay={100}>
+              <FeaturedProject
+                title="Challenge Tracker"
+                description="A multi-tenant SaaS accountability tool for group challenges. Real-time debt tracking, photo proof verification, and configurable rules — built on a micro-frontend architecture."
+                metrics={['Module Federation', 'Real-time Sync', 'Clerk Auth', 'S3 Uploads']}
+                liveUrl="/projects/challenge-tracker"
+                architectureUrl="/architecture"
+                screenshotSrc={challengeTrackerShot}
+                isLive
+              />
+            </ScrollReveal>
+            <ScrollReveal delay={150}>
+              <FeaturedProject
+                title="Ledger"
+                description="A household finance + trip-splitting app for Spanish-speaking couples. Goal-first dashboard with ETA forecasting, shared expense logging with audit trail, and isolated trip ledgers — federated as a second remote into this portfolio."
+                metrics={['Module Federation', 'NestJS + MongoDB', 'es-MX i18n', 'Clerk Auth']}
+                liveUrl="/projects/ledger"
+                architectureUrl="/architecture"
+                domain="ledger.nelsonriera.dev"
+                screenshotSrc={ledgerShot}
+                isLive
+              />
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 

@@ -63,6 +63,22 @@ html, body {
   overflow: hidden;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  /* Stop mobile browsers from inflating font sizes. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/*
+ * iOS Safari auto-zooms (and never zooms back out) when a form field with
+ * font-size < 16px is focused. Force 16px on small screens — this also covers
+ * the federated remotes (Challenge Tracker, Ledger) rendered inside the host.
+ */
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }
 
 #root {
